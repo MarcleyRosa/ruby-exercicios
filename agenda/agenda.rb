@@ -19,8 +19,21 @@ def adicionar
   telefone = gets.chomp
 
   @agenda << { nome: nome, telefone: telefone }
-  puts "-------Adicionado-------"
+  puts "---Contato Adicionado---"
+  puts "#{nome}"
   puts "------------------------"
+end
+
+def contato
+  puts "Achar contato"
+  nome = gets.chomp
+  @agenda.each do |contato|
+    if contato[:nome].downcase.include?(nome.downcase)
+      puts "-----------------------------------------"
+      puts "#{contato[:nome]} - #{contato[:telefone]}"
+      puts "-----------------------------------------"
+    end
+  end
 end
 
 loop do
@@ -34,5 +47,7 @@ loop do
         lista;
       when 2;
         adicionar;
+      when 3;
+        contato
   end
 end
