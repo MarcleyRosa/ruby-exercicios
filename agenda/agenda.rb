@@ -56,8 +56,20 @@ def editar
 
 end
 
+def remover
+  print "Qual contato deseja remover: "
+  nome = gets.chomp
+
+  @agenda.each do |contato|
+    if contato[:nome].downcase == (nome.downcase)
+      indice = @agenda.index(contato)
+      @agenda.delete_at(indice)
+    end
+  end
+end
+
 loop do
-  puts "1 - Contatos\n2 - Adicionar Contatos\n3 - Ver Contatos\n4 - Editar Contatos\5 - Remover Contatos\n0 - Sair\n"
+  puts "1 - Contatos\n2 - Adicionar Contatos\n3 - Ver Contatos\n4 - Editar Contatos\n5 - Remover Contatos\n0 - Sair\n"
   option = gets.chomp.to_i;
     case option
       when 0;
@@ -71,5 +83,11 @@ loop do
         contato
       when 4
         editar
+      when 5
+        remover
+      else
+        puts "--------------"
+        puts "Opção invalida"
+        puts "--------------"
   end
 end
